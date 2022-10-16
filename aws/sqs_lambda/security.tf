@@ -37,5 +37,27 @@ resource "aws_iam_role_policy" "sqs_policy" {
   })
 }
 
+resource "aws_sqs_queue_policy" "policy" {
+  queue_url = aws_sqs_queue.q.id
 
-
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Id": "sqspolicy",
+  "Statement": [
+    {
+      "Sid": "First",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "sqs:SendMessage",
+      "Resource": "${aws_sqs_queue.q.arn}",
+      "Condition": {
+        "ArnEquals": {
+          "aws:SourceArn": "${var.sns_topic_arn}"
+        }
+      }
+    }
+  ]
+}
+POLICY
+}

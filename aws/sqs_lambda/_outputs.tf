@@ -1,5 +1,5 @@
 output "sqs_arn" {
-    value = var.sqs_arn
+    value = aws_sqs_queue.q.arn
 }
 
 output "lambda_arn" {

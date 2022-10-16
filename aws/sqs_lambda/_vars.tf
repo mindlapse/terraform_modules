@@ -1,3 +1,8 @@
+/*
+ * 
+ * Common
+ *
+ */
 
 variable "env" {
     type = string
@@ -17,10 +22,13 @@ variable "tags" {
     description = "Tags to apply"
 }
 
-variable "sqs_arn" {
-    type = string
-    description = "The ARN of the SQS topic that creates events for the lambda"
-}
+
+/*
+ * 
+ * Lambda vars
+ *
+ */
+
 
 variable "image_name" {
     type = string
@@ -46,5 +54,42 @@ variable "lambda_policies" {
 variable "environment" {
     type = map
     default = {}
-    description = "A set of environment variables"
+    description = "A set of environment variables provided to the lambda"
+}
+
+
+/*
+ * 
+ * SNS vars
+ *
+ */
+
+
+variable "sns_topic_arn" {
+    type = string
+    description = "ARN of the SNS topic that can SendMessage to this queue"
+}
+
+variable "sns_filter_policy" {
+    type = string
+    default = null
+    description = "An SNS filter policy, useful for routing"
+}
+
+
+/*
+ * 
+ * SQS vars
+ *
+ */
+
+
+variable "queue_name" {
+    type = string
+    description = "The name of the SQS queue (must end in .fifo)"
+}
+
+variable "fifo" {
+    type = bool
+    description = "Enable to use a FIFO queue."
 }
