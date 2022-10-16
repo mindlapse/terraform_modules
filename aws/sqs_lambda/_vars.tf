@@ -83,12 +83,6 @@ variable "sns_filter_policy" {
  *
  */
 
-
-variable "queue_name" {
-    type = string
-    description = "The name of the SQS queue (must end in .fifo)"
-}
-
 variable "fifo" {
     type = bool
     description = "Enable to use a FIFO queue."

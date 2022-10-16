@@ -1,6 +1,6 @@
 
 resource "aws_sqs_queue" "q" {
-  name                        = "${var.queue_name}${var.fifo ? ".fifo" : ""}"
+  name                        = "${var.function_name}${var.fifo ? ".fifo" : ""}"
   fifo_queue                  = var.fifo
   content_based_deduplication = var.fifo
   tags = var.tags
@@ -13,7 +13,7 @@ resource "aws_sqs_queue" "q" {
 }
 
 resource "aws_sqs_queue" "dlq" {
-  name = "${var.queue_name}_dlq${var.fifo ? ".fifo" : ""}"
+  name = "${var.function_name}_dlq${var.fifo ? ".fifo" : ""}"
   fifo_queue = var.fifo
 }
 
