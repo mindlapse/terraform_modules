@@ -31,7 +31,7 @@ resource "aws_iam_role_policy" "sqs_policy" {
           "sqs:GetQueueAttributes",
         ]
         Effect   = "Allow"
-        Resource = "${var.sqs_arn}"
+        Resource = "${aws_sqs_queue.q.arn}"
       },
     ]
   })

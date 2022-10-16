@@ -13,7 +13,7 @@ resource "aws_lambda_function" "lambda" {
   tracing_config {
     mode = "PassThrough"
   }
-  
+
   environment {
     variables = merge(var.environment, {
       "ENV" = var.env
@@ -25,7 +25,7 @@ resource "aws_lambda_function" "lambda" {
 
 
 resource "aws_lambda_event_source_mapping" "example" {
-  event_source_arn = var.sqs_arn
+  event_source_arn = aws_sqs_queue.q.arn
   function_name    = aws_lambda_function.lambda.arn
   batch_size = 1
 }
