@@ -8,7 +8,7 @@ resource "aws_lambda_function" "lambda" {
   package_type = "Image"
   publish = true
   timeout = var.function_timeout
-  memory_size = 256
+  memory_size = var.memory_size
   
   tracing_config {
     mode = "PassThrough"

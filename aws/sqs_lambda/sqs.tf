@@ -18,6 +18,7 @@ resource "aws_sqs_queue" "dlq" {
 }
 
 resource "aws_sns_topic_subscription" "sub" {
+  count = try(var.sns_topic_arn, false) ? 1 : 0
   topic_arn = var.sns_topic_arn
   protocol  = "sqs"
   endpoint  = aws_sqs_queue.q.arn

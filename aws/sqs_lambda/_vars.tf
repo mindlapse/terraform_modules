@@ -57,6 +57,12 @@ variable "environment" {
     description = "A set of environment variables provided to the lambda"
 }
 
+variable "memory_size" {
+    type = number
+    default = 256
+    description = "The amount of memory to allocate for the function"
+}
+
 
 /*
  * 
@@ -67,6 +73,7 @@ variable "environment" {
 
 variable "sns_topic_arn" {
     type = string
+    default = null
     description = "ARN of the SNS topic that can SendMessage to this queue"
 }
 
