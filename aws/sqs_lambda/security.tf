@@ -38,7 +38,7 @@ resource "aws_iam_role_policy" "sqs_policy" {
 }
 
 resource "aws_sqs_queue_policy" "policy" {
-  count = try(var.sns_topic_arn, false) ? 1 : 0
+  count = var.sns_topic_arn != null ? 1 : 0
   queue_url = aws_sqs_queue.q.id
 
   policy = <<POLICY
