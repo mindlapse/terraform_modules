@@ -38,7 +38,7 @@ resource "aws_iam_policy" "read" {
 }
 
 
-resource "aws_iam_policy" "delete_em_submitted_txn" {
+resource "aws_iam_policy" "delete" {
     name = "${local.prefix}_delete_${lower(var.name)}"
     policy = jsonencode({
         Version = "2012-10-17"
