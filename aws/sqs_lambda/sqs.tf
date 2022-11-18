@@ -4,7 +4,7 @@ resource "aws_sqs_queue" "q" {
   fifo_queue                  = var.fifo
   content_based_deduplication = var.fifo
   tags = var.tags
-  visibility_timeout_seconds = 120
+  visibility_timeout_seconds = var.function_timeout
   
   redrive_policy = jsonencode({
     deadLetterTargetArn = aws_sqs_queue.dlq.arn
