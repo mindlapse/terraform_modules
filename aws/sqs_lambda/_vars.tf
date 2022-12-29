@@ -94,3 +94,9 @@ variable "fifo" {
     type = bool
     description = "Enable to use a FIFO queue."
 }
+
+variable "max_receive_count" {
+    type = number
+    default = 5
+    description = "The number of retries before sending to the DLQ"
+}
