@@ -4,7 +4,7 @@ module "bucket_backup_region" {
     env = var.env
     product = var.product
 
-    bucket_suffix = "replica"
+    bucket_suffix = "backup"
 
     providers = {
         aws = aws.backup_region

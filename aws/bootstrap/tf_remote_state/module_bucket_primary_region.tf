@@ -4,7 +4,7 @@ module "bucket_primary_region" {
     env = var.env
     product = var.product
 
-    bucket_suffix = ""
+    bucket_suffix = "primary"
 
     providers = {
         aws = aws.primary_region
