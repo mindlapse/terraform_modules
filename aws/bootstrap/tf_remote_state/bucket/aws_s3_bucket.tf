@@ -1,4 +1,4 @@
 resource "aws_s3_bucket" "state" {
-    bucket = "${local.prefix}-tfstate-bucket-${var.bucket_suffix}"
+    bucket = "${local.prefix}-terraform-remote-state-${var.bucket_suffix}"
     force_destroy = true
 }
