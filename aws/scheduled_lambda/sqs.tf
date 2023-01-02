@@ -12,10 +12,12 @@ resource "aws_sqs_queue" "q" {
     maxReceiveCount     = 1
   })
   tags = var.tags
+  sqs_managed_sse_enabled = true
 }
 
 resource "aws_sqs_queue" "dlq" {
   name = "${local.name}_dlq${var.fifo ? ".fifo" : ""}"
   fifo_queue = var.fifo
   tags = var.tags
+  sqs_managed_sse_enabled = true
 }

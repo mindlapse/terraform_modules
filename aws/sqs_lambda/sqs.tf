@@ -10,12 +10,14 @@ resource "aws_sqs_queue" "q" {
     deadLetterTargetArn = aws_sqs_queue.dlq.arn
     maxReceiveCount     = var.max_receive_count
   })
+  sqs_managed_sse_enabled = true
 }
 
 resource "aws_sqs_queue" "dlq" {
   name = "${var.function_name}_dlq${var.fifo ? ".fifo" : ""}"
   tags = var.tags
   fifo_queue = var.fifo
+  sqs_managed_sse_enabled = true
 }
 
 resource "aws_sns_topic_subscription" "sub" {
