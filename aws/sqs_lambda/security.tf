@@ -15,6 +15,7 @@ resource "aws_iam_role" "execution_role" {
   name               = "${var.function_name}_execution_role"
   assume_role_policy = "${data.aws_iam_policy_document.AWSLambdaTrustPolicy.json}"
   managed_policy_arns = concat(var.lambda_policies, ["arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"])
+  tags = var.tags
 }
 
 

@@ -14,6 +14,7 @@ resource "aws_sqs_queue" "q" {
 
 resource "aws_sqs_queue" "dlq" {
   name = "${var.function_name}_dlq${var.fifo ? ".fifo" : ""}"
+  tags = var.tags
   fifo_queue = var.fifo
 }
 

@@ -9,6 +9,7 @@ resource "aws_lambda_function" "lambda" {
   publish = true
   timeout = var.function_timeout
   memory_size = var.memory_size
+  tags = var.tags
   
   tracing_config {
     mode = "PassThrough"

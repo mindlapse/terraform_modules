@@ -15,10 +15,8 @@ variable "product" {
 }
 
 variable "tags" {
-    type = object({
-        product = string
-        env = string
-    })
+    type = map(any)
+    default = {}
     description = "Tags to apply"
 }
 
