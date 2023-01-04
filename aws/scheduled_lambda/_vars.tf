@@ -60,3 +60,9 @@ variable "schedule_expression" {
     default = ""
     description = "Either cron(...) or rate(...) syntax, or omit to disable"
 }
+
+variable "memory_size" {
+    type = number
+    default = 256
+    description = "Amount of memory to give the Lambda"
+}
