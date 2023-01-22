@@ -1,8 +1,8 @@
 
 data "aws_iam_policy_document" "AWSLambdaTrustPolicy" {
   statement {
-    actions    = ["sts:AssumeRole"]
-    effect     = "Allow"
+    actions = ["sts:AssumeRole"]
+    effect  = "Allow"
     principals {
       type        = "Service"
       identifiers = ["lambda.amazonaws.com"]
@@ -12,10 +12,10 @@ data "aws_iam_policy_document" "AWSLambdaTrustPolicy" {
 
 
 resource "aws_iam_role" "execution_role" {
-  name               = "${var.function_name}_execution_role"
-  assume_role_policy = "${data.aws_iam_policy_document.AWSLambdaTrustPolicy.json}"
+  name                = "${var.function_name}_execution_role"
+  assume_role_policy  = data.aws_iam_policy_document.AWSLambdaTrustPolicy.json
   managed_policy_arns = concat(var.lambda_policies, ["arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"])
-  tags = var.tags
+  tags                = var.tags
 }
 
 
@@ -39,7 +39,7 @@ resource "aws_iam_role_policy" "sqs_policy" {
 }
 
 resource "aws_sqs_queue_policy" "policy" {
-  count = var.sns_topic_arn != null ? 1 : 0
+  count     = var.sns_topic_arn != null ? 1 : 0
   queue_url = aws_sqs_queue.q.id
 
   policy = <<POLICY

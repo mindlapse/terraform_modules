@@ -1,3 +1,3 @@
 locals {
-    prefix = "${var.product}-${var.env}"
+  prefix = "${var.product}-${var.env}"
 }

@@ -1,12 +1,12 @@
 module "bucket_primary_region" {
-    
-    source = "./bucket"
-    env = var.env
-    product = var.product
 
-    bucket_suffix = "primary"
+  source  = "./bucket"
+  env     = var.env
+  product = var.product
 
-    providers = {
-        aws = aws.primary_region
-    }
+  bucket_suffix = "primary"
+
+  providers = {
+    aws = aws.primary_region
+  }
 }

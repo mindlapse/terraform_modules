@@ -5,19 +5,19 @@
  */
 
 variable "env" {
-    type = string
-    description = "[dev, prod]"
+  type        = string
+  description = "[dev, prod]"
 }
 
 variable "product" {
-    type = string
-    description = "product codename, e.g. 'ta'"
+  type        = string
+  description = "product codename, e.g. 'ta'"
 }
 
 variable "tags" {
-    type = map(any)
-    default = {}
-    description = "Tags to apply"
+  type        = map(any)
+  default     = {}
+  description = "Tags to apply"
 }
 
 
@@ -29,36 +29,36 @@ variable "tags" {
 
 
 variable "image_name" {
-    type = string
-    description = "The name of the ECR image"
+  type        = string
+  description = "The name of the ECR image"
 }
 
 variable "function_name" {
-    type = string
-    description = "The name of the Lambda function"
+  type        = string
+  description = "The name of the Lambda function"
 }
 
 variable "function_timeout" {
-    type = number
-    description = "Function timeout in seconds"
-    default = 120
+  type        = number
+  description = "Function timeout in seconds"
+  default     = 120
 }
 
 variable "lambda_policies" {
-    type = list(string)
-    description = "A list of aws_iam_policy resource ARNs to grant to the lambda function"
+  type        = list(string)
+  description = "A list of aws_iam_policy resource ARNs to grant to the lambda function"
 }
 
 variable "environment" {
-    type = map
-    default = {}
-    description = "A set of environment variables provided to the lambda"
+  type        = map(any)
+  default     = {}
+  description = "A set of environment variables provided to the lambda"
 }
 
 variable "memory_size" {
-    type = number
-    default = 256
-    description = "The amount of memory to allocate for the function"
+  type        = number
+  default     = 256
+  description = "The amount of memory to allocate for the function"
 }
 
 
@@ -70,15 +70,15 @@ variable "memory_size" {
 
 
 variable "sns_topic_arn" {
-    type = string
-    default = null
-    description = "ARN of the SNS topic that can SendMessage to this queue"
+  type        = string
+  default     = null
+  description = "ARN of the SNS topic that can SendMessage to this queue"
 }
 
 variable "sns_filter_policy" {
-    type = string
-    default = null
-    description = "An SNS filter policy, useful for routing"
+  type        = string
+  default     = null
+  description = "An SNS filter policy, useful for routing"
 }
 
 
@@ -89,12 +89,12 @@ variable "sns_filter_policy" {
  */
 
 variable "fifo" {
-    type = bool
-    description = "Enable to use a FIFO queue."
+  type        = bool
+  description = "Enable to use a FIFO queue."
 }
 
 variable "max_receive_count" {
-    type = number
-    default = 5
-    description = "The number of retries before sending to the DLQ"
+  type        = number
+  default     = 5
+  description = "The number of retries before sending to the DLQ"
 }
