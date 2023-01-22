@@ -1,5 +1,3 @@
-
-
 resource "aws_sqs_queue" "q" {
   name                        = "${local.name}${var.fifo ? ".fifo" : ""}"
   fifo_queue                  = var.fifo
@@ -14,6 +12,7 @@ resource "aws_sqs_queue" "q" {
   tags = var.tags
   sqs_managed_sse_enabled = true
 }
+
 
 resource "aws_sqs_queue" "dlq" {
   name = "${local.name}_dlq${var.fifo ? ".fifo" : ""}"

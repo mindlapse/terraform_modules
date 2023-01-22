@@ -66,3 +66,9 @@ variable "memory_size" {
     default = 256
     description = "Amount of memory to give the Lambda"
 }
+
+variable "log_retention_in_days" {
+    type = number
+    default = 14
+    description = "Log retention in days (default 14 days)"
+}
