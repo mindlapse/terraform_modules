@@ -3,7 +3,7 @@ resource "aws_lambda_function" "lambda" {
 
   function_name = var.function_name
   role          = aws_iam_role.execution_role.arn
-  image_uri     = "${local.account_id}.dkr.ecr.${local.region}.amazonaws.com/${var.image_name}:${var.env}"
+  image_uri     = "${local.account_id}.dkr.ecr.${local.region}.amazonaws.com/${var.image_name}:${var.image_version}"
 
   package_type = "Image"
   publish      = true

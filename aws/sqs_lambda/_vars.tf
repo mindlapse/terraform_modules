@@ -33,6 +33,12 @@ variable "image_name" {
   description = "The name of the ECR image"
 }
 
+variable "image_version" {
+  type        = string
+  default     = "latest"
+  description = "Image version"
+}
+
 variable "function_name" {
   type        = string
   description = "The name of the Lambda function"
